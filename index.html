@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+    <div class="layout">
+        <div class="header">
+            <h1>LIBRARY</h1>
+            <button id="add">Add Book</button>
+        </div>
+        <div class="main">
+            <div>
+                <p>Title: The Ignited Minds.</p>
+                <p>Author: Dr. A.P.J. Abdul Kalam</p>
+                <p>Number of pages: 190</p>
+                <label for="readStatus">Read
+                    <input type="checkbox" id="readStatus">
+                </label>
+                <p><button id="delete">Delete</button></p>
+            </div>
+        </div>
+        <dialog id="dialog">
+            <form action="">
+                <h2>Book Details</h2>
+                <p>
+                    <label for="book_name">Book Name: 
+                        <input type="text" id="book_name" required>
+                    </label>
+                </p>
+                <p>
+                    <label for="author_name">Author Name: 
+                        <input type="text" id="author_name" required>
+                    </label>
+                </p>
+                <p>
+                    <label for="pages">No. of pages: 
+                        <input type="number" id="pages" required>
+                    </label>
+                </p>
+                <p>
+                    <label for="read">Read:  
+                        <input type="checkbox" id="read">
+                    </label>
+                </p>
+                <span><button id="close">Close</button> <button id="confirm">Confirm</button></span>
+            </form>
+        </dialog>
+    </div>
+</body>
+
+</html>
