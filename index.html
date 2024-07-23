@@ -6,7 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Library</title>
     <link rel="stylesheet" href="style.css">
-    <script src="script.js" defer></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+        rel="stylesheet">
 </head>
 
 <body>
@@ -16,43 +20,37 @@
             <button id="add">Add Book</button>
         </div>
         <div class="main">
-            <div>
-                <p>Title: The Ignited Minds.</p>
-                <p>Author: Dr. A.P.J. Abdul Kalam</p>
-                <p>Number of pages: 190</p>
-                <label for="readStatus">Read
-                    <input type="checkbox" id="readStatus">
-                </label>
-                <p><button id="delete">Delete</button></p>
-            </div>
+
         </div>
         <dialog id="dialog">
-            <form action="">
+            <form id="bookForm" action="">
                 <h2>Book Details</h2>
                 <p>
-                    <label for="book_name">Book Name: 
+                    <label for="book_name">Book Name:
                         <input type="text" id="book_name" required>
                     </label>
                 </p>
                 <p>
-                    <label for="author_name">Author Name: 
+                    <label for="author_name">Author Name:
                         <input type="text" id="author_name" required>
                     </label>
                 </p>
                 <p>
-                    <label for="pages">No. of pages: 
+                    <label for="pages">No. of pages:
                         <input type="number" id="pages" required>
                     </label>
                 </p>
                 <p>
-                    <label for="read">Read:  
+                    <label for="read">Read:
                         <input type="checkbox" id="read">
                     </label>
                 </p>
-                <span><button id="close">Close</button> <button id="confirm">Confirm</button></span>
+                <span><button type="button" id="close">Close</button> <button type="submit"
+                        id="confirm">Confirm</button></span>
             </form>
         </dialog>
     </div>
+    <script src="script.js"></script>
 </body>
 
 </html>
