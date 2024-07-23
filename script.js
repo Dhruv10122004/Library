@@ -7,9 +7,7 @@ const pages = document.getElementById('pages');
 const read = document.getElementById('read');
 const confirm = document.getElementById('confirm');
 const main = document.querySelector('.main');
-const btn = document.getElementById('delete');
-
-confirm.addEventListener('click', makeCard);
+const bookForm = document.getElementById('bookForm');
 
 addBook.addEventListener('click', () => {
     dialog.showModal();
@@ -29,6 +27,11 @@ function Book(name, author, pages, isRead) {
     this.isRead = isRead;
 }
 
+bookForm.addEventListener('submit', (event) => {
+    event.preventDefault();
+    makeCard();
+});
+
 function makeCard() {
     let title = bookName.value;
     let author = authorName.value;
@@ -38,6 +41,7 @@ function makeCard() {
     let book = new Book(title, author, page, isRead);
     bookContainer.push(book);
     display(bookContainer);
+    bookForm.reset(); // Clear the form after submission
     dialog.close();
 }
 
@@ -45,11 +49,11 @@ function display(bookContainer) {
     // Clear the main container before displaying new cards
     main.innerHTML = '';
     for (let i = 0; i < bookContainer.length; i++) {
-        buildDOM(bookContainer[i]);
+        buildDOM(bookContainer[i], i);
     }
 }
 
-function buildDOM(bookObject) {
+function buildDOM(bookObject, index) {
     const card = document.createElement('div');
 
     const title = document.createElement('p');
@@ -69,17 +73,22 @@ function buildDOM(bookObject) {
     label.appendChild(document.createTextNode('Read'));
     const checkbox = document.createElement('input');
     checkbox.type = 'checkbox';
-    checkbox.id = 'readStatus';
+    checkbox.id = `readStatus${index}`;
     checkbox.checked = bookObject.isRead; // Set the checkbox state
     label.appendChild(checkbox);
     card.appendChild(label);
 
-    const del = document.createElement('span');
     const del_btn = document.createElement('button');
-    del_btn.id = 'delete';
+    del_btn.id = `${index}`;
+    del_btn.classList.add('delete');
     del_btn.textContent = 'Delete'; // Add text to the delete button
-    del.appendChild(del_btn);
-    card.appendChild(del);
+    del_btn.addEventListener('click', (event) => deleteCard(event.target.id));
+    card.appendChild(del_btn);
 
     main.appendChild(card); // Append the card to the main container
+}
+
+function deleteCard(index) {
+    bookContainer.splice(index, 1);
+    display(bookContainer);
 }
